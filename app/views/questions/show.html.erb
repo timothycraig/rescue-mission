@@ -1,0 +1,32 @@
+<div class="row" style="padding-top: 45px;">
+  <div class="column small-12 large-6">
+    <div class="callout">
+    <h4><%= @question.title %></h4>
+    <p><%= @question.question_body %></p>
+    <%= button_to "Edit Question", edit_question_path(@question), class:"button", method: "get"  %>
+    <%= button_to "Delete Question", question_path(@question), class:"button", method: "delete" %>
+  </div>
+  </div>
+
+    <div class="column small-12 large-6">
+      <%= form_for [@question, @answer] do |f| %>
+        <div class="field">
+          <%= f.label :answer_this_question %>
+          <%= f.text_area :answer_body, rows:10 %>
+        </div>
+          <%= f.submit class:"button" %>
+      <% end %>
+    </div>
+</div>
+<hr>
+
+<div class="row">
+  <div class="column small-12">
+    <h5>Answers:</h5>
+    <% @answers.each do |answer| %>
+    <div class="callout secondary">
+      <%= answer.answer_body %>
+    </div>
+    <% end %>
+  </div>
+</div>

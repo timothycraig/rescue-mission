@@ -1,0 +1,28 @@
+<div class="row" style="padding-top:45px;">
+  <div class="column">
+    <table>
+      <thead>
+        <tr>
+          <th>Question Title</th>
+          <th>Date Created</th>
+          <th>Date Updated</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @questions.each do |question| %>
+          <tr>
+            <td>
+              <%= link_to question.title, question_path(question) %>
+            </td>
+            <td>
+              <%= question.created_at %>
+            </td>
+            <td>
+              <%= question.updated_at %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

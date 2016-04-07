@@ -1,14 +1,42 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>RescueMission</title>
-  <%= stylesheet_link_tag    'application', media: 'all' %>
-  <%= javascript_include_tag 'application' %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<%= yield %>
+    <title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
 
-</body>
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+    <div class="top-bar">
+      <div class="top-bar-left">
+        <ul class="menu">
+          <li class="menu-text"><a href="/">Rescue Mission</a></li>
+          <li><a href="/questions">Questions</a></li>
+          <li><a href="/questions/new">New Question</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="row column" style="padding-bottom:30px;">
+      <% if flash[:success] %>
+        <div class="success"><%= flash[:success] %></div>
+        <% flash.delete(:success) %>
+      <% end %>
+
+      <% if flash[:error] %>
+        <div class="error"><%= flash[:error] %></div>
+        <% flash.delete(:error) %>
+      <% end %>
+    </div>
+
+    <div class="row column">
+      <%= yield %>
+    </div>
+
+  </body>
 </html>

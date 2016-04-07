@@ -1,0 +1,15 @@
+<div class="row column small-12">
+  <%= form_for(@question) do |f| %>
+    <div class="field">
+      <%= f.label(:title, "Quesiton Title") %>
+      <%= f.text_field :title %>
+    </div>
+
+    <div class="field">
+      <%= f.label :question_body, "Question Body" %>
+      <%= f.text_area :question_body %>
+    </div>
+
+    <%= f.submit class:"button" %>
+  <% end %>
+</div>
